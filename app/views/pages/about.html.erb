@@ -25,7 +25,7 @@
 <% end %>
 
 <% if @user_ip_addr.present? %>
-	<h1>request.env["HTTP_X_FORWARDED_FOR"].try(:split, ',').try(:first) || request.env["REMOTE_ADDR"]</h1>
+	<h1>request.env["HTTP_X_FORWARDED_FOR"].try(:split, ',').try(:first) || request.remote_ip</h1>
 	<h3><%= @user_ip_addr%></h3>
 <% end %>
 <style type="text/css">

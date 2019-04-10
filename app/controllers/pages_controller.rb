@@ -15,9 +15,9 @@ class PagesController < ApplicationController
     @header_http = request.headers['X-Forwarded-For']
     end
 
-    @user_ip_addr = request.env["HTTP_X_FORWARDED_FOR"].try(:split, ',').try(:first) || request.env["REMOTE_ADDR"]
-    logger.debug " request.env[HTTP_X_FORWARDED_FOR].try(:split, ',').try(:first) || request.env[REMOTE_ADDR]"
-    logger.debug request.env["HTTP_X_FORWARDED_FOR"].try(:split, ',').try(:first) || request.env["REMOTE_ADDR"]
+    @user_ip_addr = request.env["HTTP_X_FORWARDED_FOR"].try(:split, ',').try(:first) || request.remote_ip
+    logger.debug " request.env[HTTP_X_FORWARDED_FOR].try(:split, ',').try(:first) || request.remote_ip"
+    logger.debug request.env["HTTP_X_FORWARDED_FOR"].try(:split, ',').try(:first) || request.remote_ip
     
     logger.debug "request.env[REMOTE_ADDR]: "
     logger.debug request.env["REMOTE_ADDR"]
