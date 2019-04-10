@@ -1,1 +1,35 @@
 <h1>This is the about page</h1>
+<% if @env_http.present? %>
+	<h1>request.env['HTTP_X_FORWARDED_FOR']</h1>
+	<h3><%= @env_http%></h3>
+<% end %>
+
+<% if @header_http.present? %>
+	<h1>request.headers['HTTP_X_FORWARDED_FOR']</h1>
+	<h3><%= @header_http%></h3>
+<% end %>
+
+<% if @remote_addr.present? %>
+	<h1>request.env[REMOTE_ADDR]</h1>
+	<h3><%= @remote_addr%></h3>
+<% end %>
+
+<% if @remote_ip.present? %>
+	<h1>request.remote_ip</h1>
+	<h3><%= @remote_ip%></h3>
+<% end %>
+
+<% if @env_http_first.present? %>
+	<h1>request.env["HTTP_X_FORWARDED_FOR"].try(:split, ',').try(:first)</h1>
+	<h3><%= @env_http_first%></h3>
+<% end %>
+
+<% if @user_ip_addr.present? %>
+	<h1>request.env["HTTP_X_FORWARDED_FOR"].try(:split, ',').try(:first) || request.env["REMOTE_ADDR"]</h1>
+	<h3><%= @user_ip_addr%></h3>
+<% end %>
+<style type="text/css">
+	h1{
+		color: red;
+	}
+</style>
